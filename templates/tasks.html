@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}My Tasks{% endblock %}
+
+{% block content %}
+
+    <h1>My Tasks</h1>
+
+    <form method="POST" action="/tasks/create">
+        <input type="text" name="title" placeholder="Enter a task...">
+        <button type="submit">Add Task</button>
+    </form>
+
+    <hr>
+
+    {% if tasks %}
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    {{ task.title }}
+                    <form method="POST" action="/tasks/{{ task.id }}/delete"
+                          style="display: inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks yet!</p>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Something Went Wrong{% endblock %}
+
+{% block content %}
+
+    <h1>Something went wrong</h1>
+    <p>{{ message }}</p>
+    <a href="{{ url_for('task_list') }}">Go back to task list</a>
+
+{% endblock %}
